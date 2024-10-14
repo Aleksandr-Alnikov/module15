@@ -3,6 +3,7 @@ import React from "react";
 export const Form = ({ name, price, year, setName, setPrice, setYear, handleEdit, setIsVisible }) => {
     const handleSubmit = (e) => {
         console.log(e);
+
         e.preventDefault();
         handleEdit(e);
         setIsVisible(false);

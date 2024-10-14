@@ -21,7 +21,7 @@ const App = () => {
         }
         setData(data);
       } catch (error) {
-        console.error('Error fetching:', error.message);
+        console.error(error.message);
       }
     };
     fetchData();
@@ -37,7 +37,6 @@ const App = () => {
 
   const updateItem = async (e) => {
     e.preventDefault();
-    if (!editItem) return;
 
     const updatedItem = { ...editItem, name, price, year };
 
@@ -53,7 +52,7 @@ const App = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error('error');
       }
 
       const updatedData = await response.json();
@@ -62,7 +61,7 @@ const App = () => {
       );
       resetForm();
     } catch (error) {
-      console.error('Error updating item:', error);
+      console.error (error);
     }
   };
 
@@ -79,7 +78,7 @@ const App = () => {
       await fetch(`https://f8710d69a6cd6ab6.mokky.dev/products/${id}`, { method: "DELETE" });
       setData(prevData => prevData.filter(item => item.id !== id));
     } catch (error) {
-      console.error('Error removing item:', error);
+      console.error(error);
     }
   };
 
@@ -103,7 +102,7 @@ const App = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error('error');
       }
 
       const data = await response.json();
@@ -112,7 +111,7 @@ const App = () => {
       setPrice('');
       setYear('');
     } catch (error) {
-      console.error('Error adding item:', error);
+      console.error(error);
     }
   };
 
